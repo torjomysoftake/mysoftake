@@ -3,8 +3,7 @@
 This documentation details the API endpoints available in the application.
 
 ## Base URL
-`/api/` (Assuming the project urls include this app with a prefix, usually `api/`)
-
+`127.0.0.1:8000/api/`
 ---
 
 ## Authentication
@@ -13,6 +12,46 @@ Some endpoints require authentication, specifically those marked for usage by Ad
 ---
 
 ## Scheduling Endpoints
+
+### Get Access Token
+Used by users to get an access token.
+
+*   **URL:** `/token/`
+*   **Method:** `POST`
+*   **Permission:** Public
+*   **Body:**
+    ```json
+    {
+        "username": "String",
+        "password": "String"
+    }
+    ```
+*   **Response:**
+    ```json
+    {
+        "access": "String",
+        "refresh": "String"
+    }
+    ```
+
+### Refresh Access Token
+Used by users to refresh their access token.
+
+*   **URL:** `/token/refresh/`
+*   **Method:** `POST`
+*   **Permission:** Public
+*   **Body:**
+    ```json
+    {
+        "refresh": "String"
+    }
+    ```
+*   **Response:**
+    ```json
+    {
+        "access": "String"
+    }
+    ```
 
 ### Book a Schedule
 Used by users to book a specific slot on a specific date.
