@@ -23,7 +23,8 @@ from api.views import (
     ServiceCreateView,
     TeamMemberList,
     TeamMemberManageView,
-    TeamMemberCreateView 
+    TeamMemberCreateView,
+    AllSlotsList
 )
 urlpatterns = [
     path('book-schedule/', BookScheduleView.as_view(), name='book-schedule'),
@@ -33,7 +34,7 @@ urlpatterns = [
     path('manage-schedule/<date>/', ManageScheduleView.as_view(), name='manage-schedule'),
     path('create-schedule/', CreateScheduleView.as_view(), name='create-schedule'),
 
-    path('department/', DepartmentCreateView.as_view(), name='department-list-create'),
+    path('departments/', DepartmentCreateView.as_view(), name='department-list-create'),
     path('department/<str:pk>/', DepartmentManageView.as_view(), name='department-retrieve-update-destroy'),
     path('slot/', SlotCreateView.as_view(), name='slot-list-create'),
     path('slot/<str:pk>/', SlotManageView.as_view(), name='slot-retrieve-update-destroy'),
@@ -52,5 +53,7 @@ urlpatterns = [
 
     path('team-member/', TeamMemberList.as_view(), name='team-member-list-create'),
     path('team-member/<str:pk>/', TeamMemberManageView.as_view(), name='team-member-retrieve-update-destroy'),
+
+    path('all-slots/', AllSlotsList.as_view(), name='all-slots'),
 
 ]

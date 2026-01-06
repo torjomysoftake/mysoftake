@@ -14,7 +14,7 @@ class UserSerializer(serializers.ModelSerializer):
 class SlotSerializer(serializers.ModelSerializer):
     class Meta:
         model = Slot
-        fields = ['start_time', 'end_time']
+        fields = ['pk','start_time', 'end_time']
 
 
 class ScheduleSerializer(serializers.ModelSerializer):
@@ -99,7 +99,7 @@ class BookingSlotSerializer(serializers.ModelSerializer):
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
-        fields = ['name']
+        fields = ['pk','name']
 
 
 class EmailSerializer(serializers.ModelSerializer):

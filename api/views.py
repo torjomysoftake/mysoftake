@@ -127,7 +127,7 @@ class CreateScheduleView(generics.CreateAPIView):
 
 
 
-class DepartmentCreateView(generics.ListCreateAPIView):
+class DepartmentCreateView(generics.ListAPIView):
     serializer_class = DepartmentSerializer
     queryset = Department.objects.all()
 
@@ -264,6 +264,10 @@ class TeamMemberCreateView(generics.CreateAPIView):
     serializer_class = TeamMemberSerializer
     queryset = TeamMember.objects.all()
     permission_classes = [IsAdminUser]
+
+class AllSlotsList(generics.ListAPIView):
+    serializer_class = SlotSerializer
+    queryset = Slot.objects.all()
 
     
 
