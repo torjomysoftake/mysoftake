@@ -251,3 +251,24 @@ Manage team member profiles.
     *   **URL:** `/team-member/<pk>/`
     *   **Method:** `GET`, `PUT`, `PATCH`, `DELETE`
 *   *(Note: Creation endpoint exists in views but is not explicitly mapped in the provided `urls.py` snippet for `/team-member/` directly as a create view, though `DepartmentCreateView` was ListCreate. `TeamMemberList` is generic ListAPIView. `TeamMemberCreateView` class exists but is not mapped to `create-team-member/` or similar in the provided list, unless `team-member/` was intended to change to ListCreate).*
+
+
+### Contact Inquirie
+Create contact inquiries.
+
+*   **URL:** `/contact-inquiry/`
+*   **Method:** `POST`
+*   **Permission:** Public
+*   **Body:**
+    ```json
+    {
+        "first_name": "String",
+        "last_name": "String",
+        "email": "String",
+        "subject": "String",
+        "motive": "General Enquiry | Job Application | Project Enquiry",
+        "message": "Text"
+    }
+    ```
+
+
