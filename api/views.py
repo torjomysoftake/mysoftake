@@ -287,3 +287,13 @@ class CreateContactInquiryView(generics.CreateAPIView):
     serializer_class = ContactInquirySerializer
     queryset = ContactInquiry.objects.all()
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(
+            {
+                "message": "Contact inquiry created successfully",
+            },
+            status=status.HTTP_201_CREATED
+        )   
