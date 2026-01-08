@@ -132,3 +132,34 @@ class TeamMember(BaseModel):
     
     
 
+class ContactInquiry(models.Model):
+    INQUIRY_CHOICES = [
+        ("general", "General Inquiry"),
+        ("support", "Support"),
+        ("sales", "Sales"),
+        ("feedback", "Feedback"),
+    ]
+
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField()
+
+    inquiry_type = models.CharField(
+        max_length=20,
+        choices=INQUIRY_CHOICES,
+        default="general"
+    )
+
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_resolved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["-created_at"]
+        verbose_name = "Contact Inquiry"
+        verbose_name_plural = "Contact Inquiries"
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} - {self.subject}"

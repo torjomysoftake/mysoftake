@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from base.models import Schedule, BookedSchedule, Slot, UserInformation, Department, Email, Project
+from base.models import Schedule, BookedSchedule, Slot, UserInformation, Department, Email, Project, ContactInquiry
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.db import transaction
@@ -139,6 +139,15 @@ class TeamMemberSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
         read_only_fields = ['created_at', 'updated_at', 'deleted_at', 'deleted_by']
+
+
+class ContactInquirySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContactInquiry
+        fields = '__all__'
+
+        read_only_fields = ['created_at', 'updated_at', 'deleted_at', 'deleted_by', 'is_resolved']
+
 
 
 

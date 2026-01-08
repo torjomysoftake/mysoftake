@@ -24,7 +24,8 @@ from api.views import (
     TeamMemberList,
     TeamMemberManageView,
     TeamMemberCreateView,
-    AllSlotsList
+    AllSlotsList,
+    CreateContactInquiryView
 )
 urlpatterns = [
     path('book-schedule/', BookScheduleView.as_view(), name='book-schedule'),
@@ -55,5 +56,7 @@ urlpatterns = [
     path('team-member/<str:pk>/', TeamMemberManageView.as_view(), name='team-member-retrieve-update-destroy'),
 
     path('all-slots/', AllSlotsList.as_view(), name='all-slots'),
+
+    path('create-contact-inquiry/', CreateContactInquiryView.as_view(), name='create-contact-inquiry'),
 
 ]

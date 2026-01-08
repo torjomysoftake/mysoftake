@@ -280,3 +280,10 @@ class AllSlotsList(generics.ListAPIView):
 
     
 
+from .serializers import ContactInquirySerializer
+from base.models import ContactInquiry
+
+class CreateContactInquiryView(generics.CreateAPIView):
+    serializer_class = ContactInquirySerializer
+    queryset = ContactInquiry.objects.all()
+

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Schedule, BookedSchedule, Slot, Department, UserInformation
+from .models import Schedule, BookedSchedule, Slot, Department, UserInformation, ContactInquiry
 from django.contrib.admin import register
 # Register your models here.
 
@@ -17,5 +17,10 @@ class UserInformationAdmin(admin.ModelAdmin):
 @admin.register(BookedSchedule)
 class BookedScheduleAdmin(admin.ModelAdmin):
     list_display = ('user','schedule_date','schedule_slot',)
+
+@admin.register(ContactInquiry)
+class ContactInquiryAdmin(admin.ModelAdmin):
+    list_display = ('first_name','last_name','email','inquiry_type','subject','message','created_at','is_resolved',)
+    list_filter = ('inquiry_type','is_resolved',)
 
 
