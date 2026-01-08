@@ -23,9 +23,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=ag@ip5mhw2bd#@0qzhk10x@q32(wa-$!dh8kgydk8f$)c)5-7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['mysoftake.onrender.com']
+ALLOWED_HOSTS = [
+    "mysoftake.onrender.com",
+    ".onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
+
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://mysoftake.onrender.com",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+
 
 
 # Application definition
@@ -56,6 +71,8 @@ INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -70,11 +87,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
-CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
 
-]
 
 ROOT_URLCONF = 'project.urls'
 
