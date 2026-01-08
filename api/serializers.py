@@ -51,8 +51,8 @@ class BookScheduleSerializer(serializers.ModelSerializer):
             if slot in schedule.slots.all():
                 raise serializers.ValidationError("Slot already booked")
             schedule.slots.add(slot)
-        user = UserInformation.objects.create(**validated_data['user_info'])
-        booking = BookedSchedule.objects.create(user=user, schedule_date=date, schedule_slot=slot)
+            user = UserInformation.objects.create(**validated_data['user_info'])
+            booking = BookedSchedule.objects.create(user=user, schedule_date=date, schedule_slot=slot)
         return schedule
 
 

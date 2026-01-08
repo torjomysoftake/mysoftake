@@ -91,6 +91,13 @@ from datetime import datetime, timedelta
 class WeeklyScheduleView(APIView):
     def get(self, request):
         start_date_str = request.query_params.get('start_date') 
+        if not start_date_str:
+            return Response(
+                {
+                    "message": "Start date is required",
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
         start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
         
         week_days = [start_date + timedelta(days=i) for i in range(5)] 
@@ -105,7 +112,7 @@ class WeeklyScheduleView(APIView):
                     slots_data.append({
                         "start_time": slot.start_time.strftime('%H:%M'),
                         "end_time": slot.end_time.strftime('%H:%M'),
-                        "status": "Booked" if booked else "Free",
+                        "status": "Booked" 
 
                     })
             data.append({
