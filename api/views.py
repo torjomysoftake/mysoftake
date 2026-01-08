@@ -107,12 +107,12 @@ class WeeklyScheduleView(APIView):
             day_schedule = Schedule.objects.filter(date=day).prefetch_related('slots')
             slots_data = []
             for schedule in day_schedule:
-                for slot in schedule.slots.all():
+                for slot in Slot.objects.all():
                     booked = BookedSchedule.objects.filter(schedule_date=day, schedule_slot=slot).exists()
                     slots_data.append({
                         "start_time": slot.start_time.strftime('%H:%M'),
                         "end_time": slot.end_time.strftime('%H:%M'),
-                        "status": "Booked" 
+                        "status": "Booked" if booked else "Available"
 
                     })
             data.append({
