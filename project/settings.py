@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=ag@ip5mhw2bd#@0qzhk10x@q32(wa-$!dh8kgydk8f$)c)5-7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mysoftake.com.bd', 'www.mysoftake.com.bd']
+ALLOWED_HOSTS = ['https://mysoftake.onrender.com/']
 
 
 # Application definition
