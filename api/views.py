@@ -100,7 +100,7 @@ class WeeklyScheduleView(APIView):
             )
         start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
         
-        week_days = [start_date + timedelta(days=i) for i in range(5)] 
+        week_days = [start_date + timedelta(days=i) for i in range(7)] 
         
         data = []
         for day in week_days:
@@ -109,10 +109,12 @@ class WeeklyScheduleView(APIView):
             for schedule in day_schedule:
                 for slot in Slot.objects.all():
                     booked = BookedSchedule.objects.filter(schedule_date=day, schedule_slot=slot).exists()
+                    status = "Available" if not booked else "Booked"
+            
                     slots_data.append({
                         "start_time": slot.start_time.strftime('%H:%M'),
                         "end_time": slot.end_time.strftime('%H:%M'),
-                        "status": "Booked" if booked else "Available"
+                        "status": status
 
                     })
             data.append({
